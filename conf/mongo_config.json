@@ -1,7 +1,0 @@
-{
-    "host": "chicago.chem-eng.northwestern.edu",
-    "port": 27017,
-    "username": "mongoreader",
-    "password": "emptycoffeecup",
-    "auth": "MONGODB-CR"
-}
