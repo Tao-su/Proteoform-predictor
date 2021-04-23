@@ -1,21 +1,4 @@
-# Install
 
-Create a virtual environment:
-
-    $ pyenv virtualenv 3.6.4 wosmongo
-
-Install all the requirements:
-
-    $ pip install -r requirements.txt
-
-Open the Jupyter notebooks:
-
-    $ jupyter notebook
-
-Or run the example:
-
-    $ cd scripts
-    $ python example1.py
     
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbkFbT25lIFBUTSBzaXRlXSAtLT5Ce1doZXJlIGlzIGl0J3MgcG9zaXRpb24gaW4gc2VxdWVuY2U_fVxuQiAtLT4gfENsb3NlIHRvIEMgdGVybWludXN8QyhlLmcuICdNJ0VGVFJIQUtMUEQuLi4pXG5CIC0tPiB8SW4gdGhlIG1pZGRsZXxEKGUuZy4gLi4uWVRSU1cnSydMR1RTQS4uLilcbkIgLS0-IHxDbG9zZSB0byBOIHRlcm1pbnVzfEUoZS5nLiAuLi5SRURSVFNLJ04nTUQpXG5DIC0tPiB8RXh0cmFjdHxGW0FkZCB0aGUgc2hvcnQgc2VxdWVuY2UgaW4gYSBmYXN0YSBmaWxlXVxuRCAtLT4gfEV4dHJhY3R8RlxuRSAtLT4gfEV4dHJhY3R8RiIsIm1lcm1haWQiOnsidGhlbWUiOiJuZXV0cmFsIn0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbT25lIFBUTSBzaXRlXSAtLT5Ce1doZXJlIGlzIGl0J3MgcG9zaXRpb24gaW4gc2VxdWVuY2U_fVxuQiAtLT4gfENsb3NlIHRvIEMgdGVybWludXN8QyhlLmcuICdNJ0VGVFJIQUtMUEQuLi4pXG5CIC0tPiB8SW4gdGhlIG1pZGRsZXxEKGUuZy4gLi4uWVRSU1cnSydMR1RTQS4uLilcbkIgLS0-IHxDbG9zZSB0byBOIHRlcm1pbnVzfEUoZS5nLiAuLi5SRURSVFNLJ04nTUQpXG5DIC0tPiB8RXh0cmFjdHxGW0FkZCB0aGUgc2hvcnQgc2VxdWVuY2UgaW4gYSBmYXN0YSBmaWxlXVxuRCAtLT4gfEV4dHJhY3R8RlxuRSAtLT4gfEV4dHJhY3R8RiIsIm1lcm1haWQiOnsidGhlbWUiOiJuZXV0cmFsIn0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
