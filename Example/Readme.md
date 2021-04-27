@@ -13,12 +13,11 @@ FASTA file of the subject species is also required for database making. Download
 
 **Note**: to download fasta file, click Download button, select format as FASTA(canonical), and hit Go button
 
-Open Command Prompt in the directory. Make sure you open it as administrator if it is installed in **C** drive. 
+Open Command Prompt in the current directory and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. Make sure you open it as administrator if it is installed in **C** drive. 
 ```bash
 makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out E_coli_B
 ```
 Copy the three newly generated file to the folder where you want to store other inputs
-
 
 
 ## 3. Setting parameters for main function
@@ -27,4 +26,6 @@ The parameters will be stored in parameter.csv file, which is structured as foll
 ---------------------------------------------- | ------------- | ------------- | ------------------------------------------ | ---------------------------------------- | -------------
 Directory where you want to store other inputs |    Ecoli_K12  |	   Ecoli_B   | uniprot-proteome_UP000000625_Ecoli_K12.xml | uniprot-proteome_UP000002032_Ecoli_B.xml | 21
 
-**Note**: the order of the column in the csv file can't be changed, otherwise the script won't work
+**Note**: 
+1. the order of the column in the csv file can't be changed, otherwise the script won't work
+2. make sure the content under the **Sbjct_species** column is identical to the name of the blast database
