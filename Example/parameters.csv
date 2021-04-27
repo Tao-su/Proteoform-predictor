@@ -1,2 +1,2 @@
 Current_path,Query_species,Sbjct_species,Filename_xml_query,Filename_xml_sbjct,search_length
-Put Directory Here,Ecoli_MG1655,Ecoli_B_BL21_DE3,uniprot-proteome_UP000000625_Ecoli_k12_MG1655.xml,uniprot-proteome_UP000002032_Ecoli_B_BL21_DE3.xml,21
+Put Directory Here,Ecoli_K12,Ecoli_B,uniprot-proteome_UP000000625_Ecoli_k12.xml,uniprot-proteome_UP000002032_Ecoli_B.xml,21
