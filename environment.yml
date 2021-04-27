@@ -1,0 +1,14 @@
+name: PTM_predictor
+channels:
+  - defaults
+dependencies:
+  - biopython=1.77=py39h2bbff1b_0
+  - matplotlib=3.3.4=py39haa95532_0
+  - matplotlib-base=3.3.4=py39h49ac443_0
+  - numpy=1.20.1=py39h34a8a5c_0
+  - numpy-base=1.20.1=py39haf7ebc8_0
+  - pandas=1.2.4=py39hd77b12b_0
+  - pip=21.0.1=py39haa95532_0
+  - pip:
+    - matplotlib-venn==0.11.6
+    - scipy==1.6.3
