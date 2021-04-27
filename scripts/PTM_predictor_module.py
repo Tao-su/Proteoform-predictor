@@ -341,7 +341,6 @@ def Make_two_circle_venn(NO_L: float, NO_R: float, NO_Inter: float, title: str, 
         plt.savefig(title+".png")
     else:
         pass
-    plt.show()
 
 
 def Unique_element_in_tuple_list(primary_key_index: int, tuple_list: list):
