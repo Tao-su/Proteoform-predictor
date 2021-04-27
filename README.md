@@ -6,7 +6,7 @@ The PTM predictor is an application used to predict post-translational modificat
 
 ## Dependencies
 
-PTM predictor relies on biopython and xml.etree.ElementTree to parse BLAST result and Uniprot xml file. It also utilizes matplotlib-venn to generate Venn diagram for comparison. These dependencies can be installed via Conda. The included environment.yml file makes this straightforward:
+PTM predictor relies on biopython and xml.etree.ElementTree to parse BLAST result and Uniprot xml file. It also utilizes matplotlib-venn to generate Venn diagram for comparison. These dependencies can be installed via [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html). The included environment.yml file makes this straightforward:
 ``` bash
 conda env create -f environment.yml
 conda activate PTM_predictor
