@@ -18,6 +18,6 @@ The basic logic of running the application is that **Run_PTM_predictor.bat** ret
 ```bash
 Run_PTM_predictor.bat
 ```
-
+**Note**: The elapsed time of the whole analysis depends on the size of the proteome. For the proteome that includes 5000 proteins, the elapsed time may be ~1 h
 
 
