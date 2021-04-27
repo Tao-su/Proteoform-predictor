@@ -15,7 +15,7 @@ FASTA file of the subject species is also required for database making. Download
 
 Open Command Prompt in the current directory and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. Make sure you open it as administrator if it is installed in **C** drive. 
 ```bash
-makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out E_coli_B
+makeblastdb -in uniprot-proteome_UP000002032_Ecoli_B.fasta -dbtype prot -out E_coli_B
 ```
 Copy the three newly generated file to the folder where you want to store other inputs
 
