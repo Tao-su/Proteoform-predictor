@@ -45,6 +45,7 @@ PathShortFasta = os.path.join(Current_path, Filename_short_sequence_fasta)
 # The directory that results will be stored in. A folder will be made immediately
 Directory_intermediate_tobe_stored = os.path.join(Current_path, "BLAST_Intermediate_file\{}_intermediate".format(
     DB_tobe_searched_against))
+os.mkdir(os.path.join(Current_path, "BLAST_Intermediate_file"))
 os.mkdir(Directory_intermediate_tobe_stored)
 
 Filename_PTM_info_csv_sbjct = "PTM_information_{}.csv".format(Sbjct_species)
