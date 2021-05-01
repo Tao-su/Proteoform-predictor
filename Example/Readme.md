@@ -15,17 +15,19 @@ FASTA file of the subject species is also required for database making. Download
 
 Open Command Prompt in the current directory and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. Make sure you open it as administrator if it is installed in **C** drive. 
 ```bash
-makeblastdb -in uniprot-proteome_UP000002032_Ecoli_B.fasta -dbtype prot -out E_coli_B
+makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out Ecoli_B
 ```
 Copy the three newly generated file to the folder where you want to store other inputs
 
 
-## 3. Setting parameters for main function
-The parameters will be stored in parameter.csv file, which is structured as following:
-                  Current_path                 | Query_species | Sbjct_species |             Filename_xml_query             |             Filename_xml_sbjct           |   search_length
----------------------------------------------- | ------------- | ------------- | ------------------------------------------ | ---------------------------------------- | -------------
-Directory where you want to store other inputs |    Ecoli_K12  |	   Ecoli_B   | uniprot-proteome_UP000000625_Ecoli_K12.xml | uniprot-proteome_UP000002032_Ecoli_B.xml | 21
+## 3. Setting arguments
+As we described in front page, we need to set five arguments before runnning the application. In this example we can set arguments as following.
+--query_xml: ~\uniprot-proteome_UP000000625.xml
+--query_species: Ecoli_K12
+--query_xml: ~\uniprot-proteome_UP000002032.xml
+--query_species: Eoli_B
+--sl: 21
 
 **Note**: 
-1. the order of the column in the csv file can't be changed, otherwise the script won't work
-2. make sure the content under the **Sbjct_species** column is identical to the name of the blast database
+1. The nomenclature of the species is not rigorious. You can put any name as long as it's informative
+2. The search length must be an odd number. This requirment enables one amino acid locates at the center of the sequence
