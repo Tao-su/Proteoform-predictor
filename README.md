@@ -14,9 +14,9 @@ conda activate PTM_predictor
 
 ## Running the application
 
-The basic logic of running the application is that **Run_PTM_predictor.bat** retrieves user defined parameters from **paramter.csv** file and passes them to the python scrpit to compile. This procedure can be achieved simply by runing the following code after we activate the virtual environment:
+Once we activate the virtual environment we can run the application by typing following codes in command line console with correct arguments
 ```bash
-Run_PTM_predictor.bat
+python PTM_predictor.py --query_xml \type\your\query xml\location\here --query_species [species name (e.g. Ecoli_K12)]  --sbjct_xml \type\your\subject xml\location\here --sbjct_species [species name (e.g. Ecoli_B)] --sl [length of short sequence]
 ```
 **Note**: The elapsed time of the whole analysis depends on the size of the proteome. For the proteome that includes 5000 proteins, the elapsed time will be ~1 h
 
