@@ -19,6 +19,12 @@ Once we activate the virtual environment, we can run the application by typing f
 ```bash
 python PTM_predictor.py --query_xml \type\your\query xml\location\here --query_species [species name (e.g. Ecoli_K12)]  --sbjct_xml \type\your\subject xml\location\here --sbjct_species [species name (e.g. Ecoli_B)] --sl [length of short sequence]
 ```
+To check what arguments should be given to the program, we can call help function as follow
+
+```bash
+python PTM_predictor.py -h
+```
+
 **Note**: The elapsed time of the whole analysis depends on the size of the proteome. For the proteome that includes 5000 proteins, the elapsed time will be ~1 h
 
 
