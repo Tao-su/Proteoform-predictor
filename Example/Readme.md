@@ -13,7 +13,7 @@ FASTA file of the subject species is also required for database making. Download
 
 **Note**: to download fasta file, click Download button, select format as FASTA(canonical), and hit Go button
 
-Direct to the directory where you install BALST+, open Command Prompt, and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. Make sure you open it as administrator if it is installed in **C** drive. 
+Direct to the directory where you install BALST+, open Command Prompt, and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. **Make sure you open it as administrator if it is installed in C drive. Otherwise there won't be any output** 
 ```bash
 makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out Ecoli_B
 ```
