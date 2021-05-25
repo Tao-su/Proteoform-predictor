@@ -24,8 +24,8 @@ def main():
     parser.add_argument('--sbjct_species', type=str, default='Ecoli_B', help="What's the name of your sbjct species (e.g., Ecoli_B)")
     parser.add_argument('--sl', type=int, default=21, help='The length of each short sequence that tobe searched against your subject xml')
     args = parser.parse_args()
-
-    Current_path = os.path.dirname(args.query_xml)
+    #Current_path = os.path.dirname(args.query_xml)
+    Current_path = os.getcwd()
     #e.g. Ecoli_MG1655
     Query_species = args.query_species
     #e.g. Ecoli_B_BL21_DE3
