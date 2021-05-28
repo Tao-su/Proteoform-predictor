@@ -357,7 +357,60 @@ def Unique_element_in_tuple_list(primary_key_index: int, tuple_list: list):
 
     return list(set([x[primary_key_index] for x in tuple_list]))
 
+def get_SeqInfo_from_UniprotXML(PathUniprotAccessionNumber: str,
+                                ColumnOfAcc: int,
+                                PathUniprotSeqInfo: str,
+                                PathUniprotXML: str,
+                                Encoding="utf_8"
+                                ):
+    """
+    Parameters
+    ----------
+    PathUniprotAccessionNumber : str, directory of a csv file containing Accession numbers
+        DESCRIPTION. The default is PathUniprotAccessionNumber.
+    PathUniprotPTM : str, directory of a csv file containing Accession numbers and PTMs info
+        DESCRIPTION. The default is PathUniprotPTM.
+    Encoding : TYPE, optional
+        DESCRIPTION. The default is "utf_8".
+    PathUniprotXML : str, directory of the XML file to be parsed
+        DESCRIPTION. The default is PathUniprotXML.
 
+    Returns
+    -------
+    None.
+
+    Notes :
+     uniprot_accession_number file has a header
+
+    """
+    import codecs
+    import csv
+    with codecs.open(PathUniprotSeqInfo, "w", Encoding) as uniprot_SeqInfo, \
+        codecs.open(PathUniprotAccessionNumber, "r", Encoding) as uniprot_accession_number:
+        PathUniprotSeqInfo = csv.writer(uniprot_SeqInfo, quoting=csv.QUOTE_MINIMAL)
+        PathUniprotAccessionNumber = csv.reader(uniprot_accession_number, quoting=csv.QUOTE_MINIMAL)
+        #################write first line in each csv file################################
+        PathUniprotSeqInfo.writerow(['Accession_Number', 'MW(Da)', 'Length', 'Sequence'])
+        #################process each entry (protein) in uniprot##########################
+        line_count = 0
+        row_pre = '' # store previous Acc, if the next Acc is identical to previous one then just copy the previous info
+        for row in PathUniprotAccessionNumber:
+            if line_count == 0:  #skip the header
+                line_count += 1
+            else:
+                if row_pre == row[ColumnOfAcc-1]:
+                    PathUniprotSeqInfo.writerow(
+                        [record.id, record.annotations.get('sequence_mass'), record.annotations.get('sequence_length'),
+                         record.seq])
+                else:
+                    try:
+                        for record in BioUniprotIO_iterparser(PathUniprotXML):
+                            if row[ColumnOfAcc-1] == record.id:  #python starts with 0
+                                PathUniprotSeqInfo.writerow([record.id, record.annotations.get('sequence_mass'), record.annotations.get('sequence_length'), record.seq])
+                                row_pre = row[ColumnOfAcc - 1]
+                                break
+                    except:
+                        print('Cannot extract info from XML')
 def time_elapsed(func):
     import time
     def wrapper():
