@@ -47,7 +47,7 @@ def main():
     Filename_PTM_info_csv_query = "PTM_information_{}.csv".format(Query_species)
     PathUniprotPTM_csv_query = os.path.join(Current_path, Filename_PTM_info_csv_query)
     #Updated xml(sbjct) with predicted PTM sites
-    Filename_xml_sbjct_modified = 'uniprot-proteome_UP000002032_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
+    Filename_xml_sbjct_modified = 'uniprot-proteome_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
     PathUniprotXML_xml_sbjct_modified = os.path.join(Current_path, Filename_xml_sbjct_modified)
 
     #Short sequences that generated based on PTM_csv(query)---short_sequence_fasta(query)
