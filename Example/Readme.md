@@ -29,5 +29,5 @@ As we described in front page, we need to set five arguments before runnning the
 --sl: 21
 
 **Note**: 
-1. The nomenclature of the query_species is not rigorious but sbjct_species must match the name of BLAST index files (phr, pin and psq) you created. You can put any name as long as it's informative
+1. The nomenclature of the query_species is not rigorious but sbjct_species must match the name of BLAST index files (phr, pin and psq) you created.
 2. The search length must be an odd number. This requirment enables one amino acid locates at the center of the sequence
