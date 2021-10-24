@@ -76,6 +76,22 @@ def BioUniprotIO_iterparser(PathUniprotXML: str, NS: str = "{http://uniprot.org/
             yield Parser(elem, return_raw_comments=False).parse()
             elem.clear()
 
+def Write_fasta_from_XML(PathUniprotXML:str, PathFASTA:str):
+    """
+    This function is used to extract aa sequence from xml file and write into a fasta file
+    ----------
+    PathUniprotXML : str, directory of the XML file to be parsed
+    PathFASTA : str, directory of the FASTA file to store the sequences
+    ------
+    return nothing
+    """
+    with open(PathFASTA, 'a') as fasta:
+        for record in BioUniprotIO_iterparser(PathUniprotXML):
+            seq = record.seq
+            id = record.id
+            name = record.name
+            header = f">{id}|{name}\n"
+            fasta.write(header + str(seq) + '\n')
 
 def NS_strip(elem_tag, NS: str = '{http://uniprot.org/uniprot}'):
     """
