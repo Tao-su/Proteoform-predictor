@@ -47,7 +47,7 @@ def main():
     Filename_PTM_info_csv_query = "PTM_information_{}.csv".format(Query_species)
     PathUniprotPTM_csv_query = os.path.join(Current_path, Filename_PTM_info_csv_query)
     #Updated xml(sbjct) with predicted PTM sites
-    Filename_xml_sbjct_modified = 'uniprot-proteome_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
+    Filename_xml_sbjct_modified = 'uniprot-proteome_UP000002032_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
     PathUniprotXML_xml_sbjct_modified = os.path.join(Current_path, Filename_xml_sbjct_modified)
 
     #Short sequences that generated based on PTM_csv(query)---short_sequence_fasta(query)
@@ -145,7 +145,7 @@ def main():
     #move the summarized file to current path for subsequent analysis
     shutil.copy(Directory_intermediate_tobe_stored+'\\' + Filename_intermediate_summary, Current_path+'\\'+Filename_intermediate_summary)
 
-    #tile of figures
+    '''#title of figures
     title_PTMsites = Sbjct_species + " PTM sites (PAM30)"
     title_Proteins = Sbjct_species + " Proteins with PTMs (PAM30)"
 
@@ -162,7 +162,7 @@ def main():
     unique_protein_names_inter = set(unique_protein_names_sbjct).intersection(unique_protein_names_merge)
 
     PTMp.Make_two_circle_venn(NO_L=len(unique_protein_names_sbjct)-len(unique_protein_names_inter), NO_R=len(unique_protein_names_merge)-len(unique_protein_names_inter),
-                         NO_Inter=len(unique_protein_names_inter), title=title_Proteins, figsize=(13, 13))
+                         NO_Inter=len(unique_protein_names_inter), title=title_Proteins, figsize=(13, 13))'''
 
 
 
@@ -198,6 +198,10 @@ def main():
         #  if they already exist, we will keep the entry as it is and store it in the newly written xml file;
         #  if any one of predicted PTM sites is new, we then create a new element for each new PTM sites, insert it/them into this entry, and store that modified entry in the newly written xml file.
         #  if there's the third possibility (I don't know yet), we will print the Acc of that protein for a manual check.
+        
+        #Add a header for ProsightPD database search
+        f.write('<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/uniprot.xsd">\n')
+  
         for i in range(0, AccNO_csv_file.shape[0]):
             Protein_Acc = AccNO_csv_file['Accession_Number'][i]
             entry = PTMp.Extract_entry_in_xml_returnStyle(PathUniprotXML_sbjct, Protein_Acc)  # every protein will be extracted from the original xml no matter it has new PTM or not
@@ -238,6 +242,8 @@ def main():
                     print(PTMpos_predicted)
             else:
                 f.write(ET.tostring(entry, encoding="unicode"))  # No need to change anything, write as original
-
+        #Add several lines at the end for ProsightPD database search
+        f.writelines('<copyright> Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License </copyright>\n')
+        f.writelines('</uniprot>')
 if __name__ == '__main__':
     main()
