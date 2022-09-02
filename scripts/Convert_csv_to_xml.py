@@ -36,7 +36,7 @@ def GenerateXML(file='test.xml',
     -------
 
     '''
-    root = ET.Element("entry", dataset="Swiss-Prot", created="2022-01-16", modifed="2022-01-16", version="1")
+    root = ET.Element("entry", dataset="Swiss-Prot", created="2022-01-16", modified="2022-01-16", version="1")
     l1_1 = ET.Element("accession")
     root.append(l1_1)
     l1_1.text = accession
