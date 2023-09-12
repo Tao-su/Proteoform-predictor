@@ -47,7 +47,7 @@ def main():
     Filename_PTM_info_csv_query = "PTM_information_{}.csv".format(Query_species)
     PathUniprotPTM_csv_query = os.path.join(Current_path, Filename_PTM_info_csv_query)
     #Updated xml(sbjct) with predicted PTM sites
-    Filename_xml_sbjct_modified = 'uniprot-proteome_UP000002032_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
+    Filename_xml_sbjct_modified = 'uniprot-proteome_{}_PredicedPTM_Added.xml'.format(Sbjct_species)
     PathUniprotXML_xml_sbjct_modified = os.path.join(Current_path, Filename_xml_sbjct_modified)
 
     #Short sequences that generated based on PTM_csv(query)---short_sequence_fasta(query)
@@ -145,24 +145,27 @@ def main():
     #move the summarized file to current path for subsequent analysis
     shutil.copy(Directory_intermediate_tobe_stored+'\\' + Filename_intermediate_summary, Current_path+'\\'+Filename_intermediate_summary)
 
-    '''#title of figures
-    title_PTMsites = Sbjct_species + " PTM sites (PAM30)"
-    title_Proteins = Sbjct_species + " Proteins with PTMs (PAM30)"
+    try:
+        #title of figures
+        title_PTMsites = Sbjct_species + " PTM sites (PAM30)"
+        title_Proteins = Sbjct_species + " Proteins with PTMs (PAM30)"
 
+        # Making Venn diagram based on PTM site
+        merge_Acc_Position_key, sbjct_Acc_Position_key = PTMp.AccNO_PTM_position_extraction(PathUniprotPTM_csv_predict, PathUniprotPTM_csv_sbjct)
+        merge_sbjct_common, merge_sbjct_pair_index = PTMp.Compare_list_of_Tuple(merge_Acc_Position_key, sbjct_Acc_Position_key)
+        PTMp.Make_two_circle_venn(NO_L=len(set(sbjct_Acc_Position_key))-len(merge_sbjct_pair_index), NO_R=len(set(merge_Acc_Position_key))-len(merge_sbjct_pair_index),
+                             NO_Inter=len(merge_sbjct_pair_index), title=title_PTMsites, figsize=(13, 13))
+    
+        # Making Venn diagram based on protein
+        unique_protein_names_sbjct = PTMp.Unique_element_in_tuple_list(0, sbjct_Acc_Position_key)  # some proteins may have multiple PTM sites. Here I only consider uniqueness at protein level
+        unique_protein_names_merge = PTMp.Unique_element_in_tuple_list(0, merge_Acc_Position_key)
+        unique_protein_names_inter = set(unique_protein_names_sbjct).intersection(unique_protein_names_merge)
+    
+        PTMp.Make_two_circle_venn(NO_L=len(unique_protein_names_sbjct)-len(unique_protein_names_inter), NO_R=len(unique_protein_names_merge)-len(unique_protein_names_inter),
+                             NO_Inter=len(unique_protein_names_inter), title=title_Proteins, figsize=(13, 13))
 
-    # Making Venn diagram based on PTM site
-    merge_Acc_Position_key, sbjct_Acc_Position_key = PTMp.AccNO_PTM_position_extraction(PathUniprotPTM_csv_predict, PathUniprotPTM_csv_sbjct)
-    merge_sbjct_common, merge_sbjct_pair_index = PTMp.Compare_list_of_Tuple(merge_Acc_Position_key, sbjct_Acc_Position_key)
-    PTMp.Make_two_circle_venn(NO_L=len(set(sbjct_Acc_Position_key))-len(merge_sbjct_pair_index), NO_R=len(set(merge_Acc_Position_key))-len(merge_sbjct_pair_index),
-                         NO_Inter=len(merge_sbjct_pair_index), title=title_PTMsites, figsize=(13, 13))
-
-    # Making Venn diagram based on protein
-    unique_protein_names_sbjct = PTMp.Unique_element_in_tuple_list(0, sbjct_Acc_Position_key)  # some proteins may have multiple PTM sites. Here I only consider uniqueness at protein level
-    unique_protein_names_merge = PTMp.Unique_element_in_tuple_list(0, merge_Acc_Position_key)
-    unique_protein_names_inter = set(unique_protein_names_sbjct).intersection(unique_protein_names_merge)
-
-    PTMp.Make_two_circle_venn(NO_L=len(unique_protein_names_sbjct)-len(unique_protein_names_inter), NO_R=len(unique_protein_names_merge)-len(unique_protein_names_inter),
-                         NO_Inter=len(unique_protein_names_inter), title=title_Proteins, figsize=(13, 13))'''
+    except:
+        print("Seems like you don't have newly annotated PTMS")
 
 
 
