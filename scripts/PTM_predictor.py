@@ -165,7 +165,7 @@ def main():
                              NO_Inter=len(unique_protein_names_inter), title=title_Proteins, figsize=(13, 13))
 
     except:
-        print("Seems like you don't have newly annotated PTMS")
+        print("Seems like you don't have newly annotated PTMs")
 
 
 
