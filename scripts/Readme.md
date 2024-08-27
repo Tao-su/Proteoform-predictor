@@ -23,20 +23,8 @@ The flowchart below depicts logic in this section:
 Every protein that has predicted PTM sites will be compared to a dictionary containing manually curated PTM sites. If one protein has predicted PTM sites that are not recorded in Uniprot database, these PTM sites will be assigned to that protein as a new element in xml file. Otherwise, the information of the protein will remain the same.
 
 The logic is also summarized as below:
-```mermaid
-graph TD
-    A[One protein entry in subject database] --> |Search against BLAST output|B{Does it have predicted PTM site?}
-    B -->|No| C(Keep the original protein entry)
-    B -->|Yes| D{Does this predicted PTM site exist in Uniprot?}
-    D -->|No| E[The protein has no PTM site recorded/The recorded PTM sites do not include the predicted one]
-    E --> G(Add the predicted PTM site to the entry)
-    D --> |Yes| C(Keep the original protein entry)
-    C --> H(Append the protein entry to a new Uniprot xml file)
-    G --> H
-    H -->|Next entry|A
-```
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW09uZSBwcm90ZWluIGVudHJ5IGluIHN1YmplY3QgZGF0YWJhc2VdIC0tPiB8U2VhcmNoIGFnYWluc3QgQkxBU1Qgb3V0cHV0fEJ7RG9lcyBpdCBoYXZlIHByZWRpY3RlZCBQVE0gc2l0ZT99XG4gICAgQiAtLT58Tm98IEMoS2VlcCB0aGUgb3JpZ2luYWwgcHJvdGVpbiBlbnRyeSlcbiAgICBCIC0tPnxZZXN8IER7RG9lcyB0aGlzIHByZWRpY3RlZCBQVE0gc2l0ZSBleGlzdCBpbiBVbmlwcm90P31cbiAgICBEIC0tPnxOb3wgRVtUaGUgcHJvdGVpbiBoYXMgbm8gUFRNIHNpdGUgcmVjb3JkZWRdXG4gICAgRCAtLT58Tm98IEZbVGhlIHJlY29yZGVkIFBUTSBzaXRlcyBkbyBub3QgaW5jbHVkZSB0aGUgcHJlZGljdGVkIG9uZV1cbiAgICBFIC0tPiBHKEFkZCB0aGUgcHJlZGljdGVkIFBUTSBzaXRlIHRvIHRoZSBlbnRyeSlcbiAgICBGIC0tPiBHXG4gICAgRCAtLT4gfFllc3wgQyhLZWVwIHRoZSBvcmlnaW5hbCBwcm90ZWluIGVudHJ5KVxuICAgIEMgLS0-IEgoQXBwZW5kIHRoZSBwcm90ZWluIGVudHJ5IHRvIGEgbmV3IFVuaXByb3QgeG1sIGZpbGUpXG4gICAgRyAtLT4gSFxuICAgIEggLS0-fE5leHQgZW50cnl8QVxuIiwibWVybWFpZCI6eyJ0aGVtZSI6Im5ldXRyYWwifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW09uZSBwcm90ZWluIGVudHJ5IGluIHN1YmplY3QgZGF0YWJhc2VdIC0tPiB8U2VhcmNoIGFnYWluc3QgQkxBU1Qgb3V0cHV0fEJ7RG9lcyBpdCBoYXZlIHByZWRpY3RlZCBQVE0gc2l0ZT99XG4gICAgQiAtLT58Tm98IEMoS2VlcCB0aGUgb3JpZ2luYWwgcHJvdGVpbiBlbnRyeSlcbiAgICBCIC0tPnxZZXN8IER7RG9lcyB0aGlzIHByZWRpY3RlZCBQVE0gc2l0ZSBleGlzdCBpbiBVbmlwcm90P31cbiAgICBEIC0tPnxOb3wgRVtUaGUgcHJvdGVpbiBoYXMgbm8gUFRNIHNpdGUgcmVjb3JkZWRdXG4gICAgRCAtLT58Tm98IEZbVGhlIHJlY29yZGVkIFBUTSBzaXRlcyBkbyBub3QgaW5jbHVkZSB0aGUgcHJlZGljdGVkIG9uZV1cbiAgICBFIC0tPiBHKEFkZCB0aGUgcHJlZGljdGVkIFBUTSBzaXRlIHRvIHRoZSBlbnRyeSlcbiAgICBGIC0tPiBHXG4gICAgRCAtLT4gfFllc3wgQyhLZWVwIHRoZSBvcmlnaW5hbCBwcm90ZWluIGVudHJ5KVxuICAgIEMgLS0-IEgoQXBwZW5kIHRoZSBwcm90ZWluIGVudHJ5IHRvIGEgbmV3IFVuaXByb3QgeG1sIGZpbGUpXG4gICAgRyAtLT4gSFxuICAgIEggLS0-fE5leHQgZW50cnl8QVxuIiwibWVybWFpZCI6eyJ0aGVtZSI6Im5ldXRyYWwifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+[![](https://mermaid.ink/img/pako:eNqNkjFvwjAQhf_KyROVQN0ZWgWCQGppK5EOFWEw8UFcJXZkn1sQ4b_XiZtAqw7NZMvv3Xd3eSeWaYFszPaGVzkkcarAf9H6WSFURhNKBajIHMEfrNu-Y0YgOPEtt7iB0egO6hVyk-XA91wqSzB5jFYJaEeVo3pyijVakAQ5_2hKopAZoYCXZAlWEt6fA3LS1KqfdA3TwQNiBZQjaCP3UvHiZys31443tDXEgUK5tH8gAA_S9-Xtr0o2lTpm3DNn6yS_DJxzC0pf_AYzbQSK20bUXfpnC0J7eQPICiew7fzShVa4CbhZu675IBLil6YnkW5frseMw5LbOf-7mmnrWQyiqkLVwa5_pudwUPjZbQQOZQE7WeB3gXkoEC6LsCY8UHDXUarYkJVoSi6FD8-p0aXMY0pM2dgfFToyvEhZqs5e6iofGZwJSdqw8Y4XFoeMO9Kro8rYmIzDThRL7rNY9ipsTcuQ0jas5y__cOd6?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqNkjFvwjAQhf_KyROVQN0ZWgWCQGppK5EOFWEw8UFcJXZkn1sQ4b_XiZtAqw7NZMvv3Xd3eSeWaYFszPaGVzkkcarAf9H6WSFURhNKBajIHMEfrNu-Y0YgOPEtt7iB0egO6hVyk-XA91wqSzB5jFYJaEeVo3pyijVakAQ5_2hKopAZoYCXZAlWEt6fA3LS1KqfdA3TwQNiBZQjaCP3UvHiZys31443tDXEgUK5tH8gAA_S9-Xtr0o2lTpm3DNn6yS_DJxzC0pf_AYzbQSK20bUXfpnC0J7eQPICiew7fzShVa4CbhZu675IBLil6YnkW5frseMw5LbOf-7mmnrWQyiqkLVwa5_pudwUPjZbQQOZQE7WeB3gXkoEC6LsCY8UHDXUarYkJVoSi6FD8-p0aXMY0pM2dgfFToyvEhZqs5e6iofGZwJSdqw8Y4XFoeMO9Kro8rYmIzDThRL7rNY9ipsTcuQ0jas5y__cOd6)
 
 ## 4. Visualization
 This part tells user the how many predicted PTM sites matched to known PTM sites in Uniprot database. Two venn diagrams will be generated in this section.
