@@ -1,4 +1,4 @@
-# PTM predictor
+# Proteoform-predictor
 
 Database search only retrieves existing information as hits. A poorly annotated database renders search results with low quality.
 
