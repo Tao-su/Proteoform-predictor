@@ -4,6 +4,9 @@ Database search only retrieves existing information as hits. A poorly annotated 
 
 The PTM predictor is an application used to predict post-translational modification (PTM) site as candidates for poorly annotated proteins of bacteria based on sequence homology. These newly generated PTM site candidates will be added to existing database, which is formated as xml, and used for top-down mass spectral search. The goal of this application is to increase the number of hits at proteoform level during database searching. 
 
+## Downloading scripts
+
+
 ## Dependencies
 
 PTM predictor relies on biopython and xml.etree.ElementTree to parse BLAST result and Uniprot xml file. It also utilizes matplotlib-venn to generate Venn diagram for comparison. These dependencies can be installed via [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html). The included environment.yml file makes this straightforward:
