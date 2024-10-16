@@ -17,7 +17,7 @@ conda activate PTM_predictor
 
 ## Running the application
 
-Once we activate the virtual environment, we can run the application by typing following codes in command line console with correct arguments. In particular, --query_xml and --query_species take the file location of the query xml and the name of the query sepcies, respectively. --sbjct_xml and --sbjct_species also require a file location and species name but they represent the subject database. Finally, the search length represents the length of each short sequence. The default length is 21.
+Once we activate the virtual environment, we can run the application by typing following codes in command line console with correct arguments. The instruction of downloading required XML files and using BLAST+ can be found in the Example folder. Once the required files are prepared, users can use the following cmd line to execute the program. In brief, --query_xml and --query_species take the file location of the query xml and the name of the query sepcies, respectively. --sbjct_xml and --sbjct_species also require a file location and species name but they represent the subject database. Finally, the search length represents the length of each short sequence. The default length is 21.
 
 ```bash
 python PTM_predictor.py --query_xml \type\your\query xml\location\here --query_species [species name (e.g. Ecoli_K12)]  --sbjct_xml \type\your\subject xml\location\here --sbjct_species [species name (e.g. Ecoli_B)] --sl [length of short sequence]
