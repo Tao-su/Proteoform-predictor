@@ -7,7 +7,7 @@ Created on Thur Apr 22 15:00:17 2021
 #######################Functions#####################
 
 import os
-
+import subprocess
 def get_PTMs_from_UniprotXML(PathUniprotAccessionNumber: str,
                              PathUniprotPTM: str,
                              PathUniprotXML: str,
@@ -435,3 +435,34 @@ def time_elapsed(func):
         func()
         print('Function is ended...' + '\n' + "Function took:", time.time()-before, "seconds")
     return wrapper
+
+def create_blast_database(input_fasta, db_type="prot", db_name=None):
+    """
+    Creates a BLAST database from a FASTA file using the makeblastdb tool.
+
+    Parameters:
+    input_fasta (str): Path to the input FASTA file.
+    db_type (str): Type of database to create. "nucl" for nucleotide, "prot" for protein. Default is "nucl".
+    db_name (str): Name of the BLAST database. If None, the name will be derived from the input_fasta.
+
+    Returns:
+    None
+    """
+    if db_name is None:
+        db_name = input_fasta.split('.')[0]  # Use the input file name (without extension) as the database name
+
+    try:
+        # Construct the makeblastdb command
+        command = [
+            "makeblastdb",  # BLAST+ command
+            "-in", input_fasta,  # Input FASTA file
+            "-dbtype", db_type,  # Database type: "nucl" or "prot"
+            "-out", db_name  # Output database name
+        ]
+
+        # Run the makeblastdb command using subprocess
+        subprocess.run(command, check=True)
+        print(f"BLAST database '{db_name}' created successfully.")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while creating BLAST database: {e}")
