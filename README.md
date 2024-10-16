@@ -5,7 +5,7 @@ Database search only retrieves existing information as hits. A poorly annotated 
 The Proteoform-predictor is an application used to predict post-translational modification (PTM) site as candidates for poorly annotated proteins of bacteria based on sequence homology. These newly generated PTM site candidates will be added to existing database, which is formated as xml, and used for top-down mass spectral search. The goal of this application is to increase the number of hits at proteoform level during database searching. 
 
 ## Downloading scripts
-Before using, users can download a zip file containing all source code into their local PCs.
+Before using, users can download a zip file containing all source code into their local PCs. 
 
 ## Dependencies
 
@@ -14,7 +14,10 @@ Proteoform-predictor relies on biopython and xml.etree.ElementTree to parse BLAS
 conda env create -f environment.yml
 conda activate PTM_predictor
 ```
-To properly create and activate an environment, make sure add the Anaconda/Library/bin to PATH variable.
+To properly create an environment, make sure add the Anaconda/Library/bin to PATH variable. If users encounter issues during the activation of the environment, try the following code.
+``` bash
+conda init cmd.exe
+```
 
 ## Running the application
 
