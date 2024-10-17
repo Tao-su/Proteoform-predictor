@@ -7,17 +7,23 @@ In this example, we will use [_E. coli_ K12](https://www.uniprot.org/uniprot/?qu
 
 
 ## 2. Making a database for local BLAST search
-
-BLAST+ is required for local BLAST search. Download [installer](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/) (.exe file) and install it in a proper directory. The example here uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly different.
-FASTA file of the subject species is also required for database making. Downloading the [FASTA](https://www.uniprot.org/uniprot/?query=proteome:UP000002032) file of _E. coli_ B strain and copy the file to the directory where you install BALST+
-
+There are two methods to create BLAST databases for the BLAST search. Both method require a fasta file. The fasta file of the subject species can be downloaded from UniProtKB. In this example, download [FASTA](https://www.uniprot.org/uniprot/?query=proteome:UP000002032) file of _E. coli_ B strain.
 **Note**: to download fasta file, click Download button, select format as FASTA(canonical), and hit Go button
-
-Direct to the directory where you install BALST+, open Command Prompt, and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. **Make sure you open it as administrator if it is installed in C drive. Otherwise there won't be any output** 
-```bash
-makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out Ecoli_B
-```
-Copy the three newly generated file to the folder where you want to store other inputs
+1. Use Python script via Commond Promt
+   Type the following codes in your terminal.
+   ```bash
+   python MakeBLASTdb.py --fasta \type\your\fasta file\location\here --result_name [species name (e.g. Ecoli_K12)]
+   ```
+   
+2. Use BLAST+.
+   Download [installer](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/) (.exe file) and install it in a proper directory. The example here uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly 
+   different.
+   Copy the fasta file of _E. coli_ B strain to the directory where you install BALST+.
+   Direct to the directory where you install BALST+, open Command Prompt, and use the following code to generate a blast database. The first parameter is the fasta file of subject strain. The second parameter is a user defined name of blast database. **Make sure     you open it as administrator if it is installed in C drive. Otherwise there won't be any output** 
+   ```bash
+   makeblastdb -in uniprot-proteome_UP000002032.fasta -dbtype prot -out Ecoli_B
+   ```
+Both methods will generate three files, .pin, .psq, and .phr. Copy these files to the directory storing all the codes.
 
 
 ## 3. Setting arguments
