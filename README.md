@@ -9,7 +9,7 @@ The Proteoform-predictor is an application used to predict post-translational mo
 Before using, users can download a zip file containing all codes and files into their local PCs. Make sure the directory storing these files is the working directory. 
 
 ## Installing Dependencies
-Besides Python and its modules, Proteoform-predictor requires [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/) to work. The example here uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly different. 
+Besides Python and its modules, Proteoform-predictor requires an installed [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/). The example in this repository uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly different. 
 
 In order to use functions related to BLAST+, be sure to add ~BLAST+\ncbi-blast-2.8.1\bin into the environment variable. The exact steps of adding environment variables can vary a lttile in different versions of Windows system, but it can be found online.
 
