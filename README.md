@@ -8,14 +8,14 @@ The Proteoform-predictor is an application used to predict post-translational mo
 
 Before using, users can download a zip file containing all codes and files into their local PCs. Make sure the directory storing these files is the working directory. 
 
-## Dependencies
-
+## Installing Dependencies
+Besides Python and its modules, Proteoform-predictor requires [BLAST+] (https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/) to work. The example here uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly different. In order to use functions related to BLAST+, be sure to add ~BLAST+\ncbi-blast-2.8.1\bin into the environment variable. The exact steps of adding environment variables can vary a lttile in different versions of Windows system, but it can be found online. 
 Proteoform-predictor relies on biopython and xml.etree.ElementTree to parse BLAST result and Uniprot xml file. It also utilizes matplotlib-venn to generate Venn diagram for comparison. These dependencies can be installed via [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html) using the following codes in Command Prompt. Before execute the codes, make sure the working directory contains the environment.yml file.
 ``` bash
 conda env create -f environment.yml
 conda activate PTM_predictor
 ```
-To properly create an environment, make sure add the Anaconda/Library/bin to PATH variable. If users encounter issues during the activation of the environment, try the following code.
+To properly create an environment, make sure add the ~Anaconda/ and ~Anaconda/Library/bin into the environment variable. If users encounter issues during the activation of the environment, try the following code.
 ``` bash
 conda init cmd.exe
 ```
