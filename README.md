@@ -24,7 +24,7 @@ To properly create an environment, make sure add the ~Anaconda/ and ~Anaconda/Li
 ``` bash
 conda init cmd.exe
 ```
-**Note** To use Conda and BLAST+ functions, uses must add the aforementioned paths to the environment variable in Windowns.
+**Note** To use Conda and BLAST+ functions, users must add the aforementioned paths to the environment variable in Windowns.
 ## Running the application
 
 Once we activate the virtual environment, we can run the application by typing following codes Command Prompt with correct arguments. The instruction of downloading required XML files and using BLAST+ can be found in the Example folder. Once the required files are prepared, users can use the following cmd line to execute the program. In brief, --query_xml and --query_species take the file location of the query xml and the name of the query sepcies, respectively. --sbjct_xml and --sbjct_species also require a file location and species name but they represent the subject database. Finally, the search length represents the length of each short sequence. The default length is 21.
