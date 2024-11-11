@@ -11,7 +11,7 @@ Before using, users can download a zip file containing all codes and files into 
 ## Installing Dependencies
 Besides Python and its modules, Proteoform-predictor requires an installed [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/). The example in this repository uses version 2.8.1. Other versions may function as well but the BLAST result might be slightly different. 
 
-In order to use functions related to BLAST+, be sure to add ~BLAST+\ncbi-blast-2.8.1\bin into the environment variable. The exact steps of adding environment variables can vary a lttile in different versions of Windows system, but it can be found online.
+In order to use functions related to BLAST+, be sure to add ~BLAST+\ncbi-blast-2.8.1\bin into the environment variable. The exact steps of adding environment variables can vary a lttile in different versions of Windows system, but they can be found online.
 
 The steps to create BLAST database for search can be found in the **Example** folder in this repository.
 
@@ -24,7 +24,7 @@ To properly create an environment, make sure add the ~Anaconda/ and ~Anaconda/Li
 ``` bash
 conda init cmd.exe
 ```
-
+**Note** To use Conda and BLAST+ functions, uses must add the aforementioned paths to the environment variable in Windowns.
 ## Running the application
 
 Once we activate the virtual environment, we can run the application by typing following codes Command Prompt with correct arguments. The instruction of downloading required XML files and using BLAST+ can be found in the Example folder. Once the required files are prepared, users can use the following cmd line to execute the program. In brief, --query_xml and --query_species take the file location of the query xml and the name of the query sepcies, respectively. --sbjct_xml and --sbjct_species also require a file location and species name but they represent the subject database. Finally, the search length represents the length of each short sequence. The default length is 21.
