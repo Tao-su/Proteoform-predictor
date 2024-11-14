@@ -134,10 +134,9 @@ def Extract_entry_in_xml_returnStyle(PathUniprotXML: str, ProteinID: str):
 
 def Extract_access_entry_in_xml_dictionary(PathUniprotXML: str):
     """
-    This function is used to extract an entry for a given proteinID
+    This function is used to create a dictionary to mapping accessions to entries 
     :param PathUniprotXML:
-    :param ProteinID:
-    :return: the whole entry that contains all information for a given protein. The returned data type is NOT generator
+    :return: a dictionary to mapping accessions to entries
     """
     import xml.etree.ElementTree as ET
 
