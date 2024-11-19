@@ -13,7 +13,7 @@ There are two methods to create BLAST databases for the BLAST search. Both metho
 1. Use Python script via Commond Promt
    Type the following codes in your terminal.
    ```bash
-   python MakeBLASTdb.py --fasta \type\your\fasta file\location\here --result_name [species name (e.g. Ecoli_K12)]
+   python MakeBLASTdb.py --fasta \type\your\fasta file\location\here --result_name [species name (e.g. Ecoli_B)]
    ```
    
 2. Use BLAST+. 
