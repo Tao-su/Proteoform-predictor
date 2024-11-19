@@ -132,6 +132,24 @@ def Extract_entry_in_xml_returnStyle(PathUniprotXML: str, ProteinID: str):
             break
     return elem
 
+def Extract_access_entry_in_xml_dictionary(PathUniprotXML: str):
+    """
+    This function is used to create a dictionary to mapping accessions to entries 
+    :param PathUniprotXML:
+    :return: a dictionary to mapping accessions to entries
+    """
+    import xml.etree.ElementTree as ET
+
+    PathUniprotXML_sbjctAcceessionEntryDictionary = {} 
+    
+    for event, elem in ET.iterparse(PathUniprotXML, events=("start", "end")):
+        elem.tag = NS_strip(elem.tag) # the uniprot address in each tag is removed
+        if event == "end" and elem.tag == 'entry':
+            if elem.find('accession').text not in PathUniprotXML_sbjctAcceessionEntryDictionary:
+                PathUniprotXML_sbjctAcceessionEntryDictionary[elem.find('accession').text] = elem
+              
+    return PathUniprotXML_sbjctAcceessionEntryDictionary
+
 
 def analyze_BLASTed_information_local_search(PathBLASTintermediate: str,
                                              Directory_intermediate_tobe_stored: str,
@@ -461,6 +479,10 @@ def create_blast_database(input_fasta, db_type="prot", db_name=None):
         ]
 
         # Run the makeblastdb command using subprocess
+
+        print("command")
+        print(command)
+
         subprocess.run(command, check=True)
         print(f"BLAST database '{db_name}' created successfully.")
 

@@ -81,7 +81,6 @@ def main():
                              PathUniprotPTM=PathUniprotPTM_csv_sbjct,
                              PathUniprotXML=PathUniprotXML_sbjct)
 
-
     with open(PathShortFasta, "w") as short_sequence_fasta:
         PTM_csv = pd.read_csv(PathUniprotPTM_csv_query)
         if search_length%2 == 0:
@@ -167,9 +166,8 @@ def main():
     except:
         print("Seems like you don't have newly annotated PTMs")
 
-
-
     intermediate_csv_file = pd.read_csv(PathUniprotPTM_csv_predict, dtype={'Query_PTM_position': int, 'Query_start': int, 'Query_end': int, 'Sbjct_PTM_position': int})
+
     intermediate_csv_file_filtered = intermediate_csv_file.drop_duplicates(subset=['Sbjct_Accession_Number', 'Sbjct_PTM_position', 'Predicted_PTM'], keep='first').reset_index(drop=True)
 
     # simplify the information in the intermediate csv file by putting unique entries to a dictionary
@@ -190,7 +188,6 @@ def main():
         else:
             pass
 
-
     AccNO_csv_file = pd.read_csv(PathUniprotAccessionNumber_sbjct)
     with open(PathUniprotXML_xml_sbjct_modified, 'a') as f:
         # The is the main function that inserts new PTM sites into corresponding protein entry
@@ -203,14 +200,16 @@ def main():
         #  if there's the third possibility (I don't know yet), we will print the Acc of that protein for a manual check.
         
         #Add a header for ProsightPD database search
+        f.write('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n')
         f.write('<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/uniprot.xsd">\n')
   
+        PathUniprotXML_sbjctAcceessionEntryDictionary = PTMp.Extract_access_entry_in_xml_dictionary(PathUniprotXML_sbjct)
+
         for i in range(0, AccNO_csv_file.shape[0]):
             Protein_Acc = AccNO_csv_file['Accession_Number'][i]
-            entry = PTMp.Extract_entry_in_xml_returnStyle(PathUniprotXML_sbjct, Protein_Acc)  # every protein will be extracted from the original xml no matter it has new PTM or not
+            entry = PathUniprotXML_sbjctAcceessionEntryDictionary[Protein_Acc]  # every protein will be extracted from the original xml no matter it has new PTM or not
             PTMpos = []
             if Protein_Acc in Dict_Acc_PTMpos_PTMdes.keys():
-
                 for ft in entry.findall('feature'):
                     if ft.attrib['type'] in FeatureType:
                         PTMpos.append(int(ft.findall('location')[0].find('position').attrib['position']))
@@ -245,6 +244,7 @@ def main():
                     print(PTMpos_predicted)
             else:
                 f.write(ET.tostring(entry, encoding="unicode"))  # No need to change anything, write as original
+
         #Add several lines at the end for ProsightPD database search
         f.writelines('<copyright> Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License </copyright>\n')
         f.writelines('</uniprot>')
