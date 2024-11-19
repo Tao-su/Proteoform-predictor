@@ -200,6 +200,7 @@ def main():
         #  if there's the third possibility (I don't know yet), we will print the Acc of that protein for a manual check.
         
         #Add a header for ProsightPD database search
+        f.write('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n')
         f.write('<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/uniprot.xsd">\n')
   
         PathUniprotXML_sbjctAcceessionEntryDictionary = PTMp.Extract_access_entry_in_xml_dictionary(PathUniprotXML_sbjct)
